@@ -36,7 +36,7 @@ class StepFactory(metaclass=Singleton):
             else:  # python module
                 body = self.ensure_body_dict(body, path)
                 return module(**body)
-        raise FileNotFoundError('Can\'t find module for action: ' + action)
+        raise FileNotFoundError(f'Can\'t find module for action: {action} within {self.modules}')
 
     def ensure_body_dict(self, body: Union[str, dict], path) -> dict:
         def get_actions_fun(act):

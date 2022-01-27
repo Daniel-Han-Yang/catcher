@@ -26,6 +26,8 @@ def prepare_modules(module_paths: list, available: dict) -> dict:
         if not os.path.exists(path) and path not in available:
             err = 'No such path: ' + path
             error(err)
+        elif not os.path.isdir(path):
+            indexed[os.path.basename(path)] = path
         else:
             for f in os.listdir(path):
                 mod_path = join(path, f)
